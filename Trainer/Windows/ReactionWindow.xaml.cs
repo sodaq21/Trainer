@@ -10,23 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Trainer.Windows;
 
-namespace Trainer
+namespace Trainer.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ReactionWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ReactionWindow : Window
     {
-        public MainWindow()
+        MenuWindow mw;
+        public ReactionWindow(MenuWindow menuwindow)
         {
             InitializeComponent();
-            MenuWindow mw = new MenuWindow();
-            mw.Show();
-            this.Hide();
+            mw = menuwindow;
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }
