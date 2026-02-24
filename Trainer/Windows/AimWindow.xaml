@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trainer.Windows"
         mc:Ignorable="d"
-        Title="Aim" Height="450" Width="800" PreviewKeyDown="Window_KeyDown" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Trainer" Height="450" Width="800" PreviewKeyDown="Window_KeyDown" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="Aim Trainer" Style="{StaticResource HeaderText}"/>
+        </Grid>
         
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Button Style="{StaticResource ServiceBtn}" HorizontalAlignment="Right">
+                <Image Source="/Assets/settings_light.png"/>
+            </Button>
+        </Grid>
     </Grid>
 </Window>

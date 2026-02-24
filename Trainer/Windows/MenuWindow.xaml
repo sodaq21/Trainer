@@ -13,8 +13,8 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
-            <Button HorizontalAlignment="Right" Margin="5" Width="50" Height="50" Background="Transparent" BorderThickness="0">
-                <Image Source="/Assets/switch_theme.png"/>
+            <Button HorizontalAlignment="Right" Style="{StaticResource ServiceBtn}">
+                <Image Source="/Assets/dark.png"/>
             </Button>
         </StackPanel>
 

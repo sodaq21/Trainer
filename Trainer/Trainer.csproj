@@ -137,6 +137,15 @@
   <ItemGroup>
     <Resource Include="Assets\switch_theme.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\settings_dark.png" />
+    <Resource Include="Assets\settings_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\light.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
