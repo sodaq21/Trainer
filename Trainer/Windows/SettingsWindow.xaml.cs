@@ -23,5 +23,13 @@ namespace Trainer.Windows
         {
             InitializeComponent();
         }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.End)
+            {
+                Application.Current.Shutdown();
+            }
+        }
     }
 }

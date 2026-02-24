@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trainer.Windows"
         mc:Ignorable="d"
-        Title="SettingsWindow" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Trainer" Height="450" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" KeyUp="Window_KeyUp">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Style="{StaticResource HeaderText}" Text="Settings" HorizontalAlignment="Center" Margin="20"/>
+        <!--size, color, window_size, count(of targets at the same time), time-->
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+            <StackPanel Margin="0 0 0 15">
+                <TextBlock Style="{StaticResource CommonText}" Text="Window size" />
+                <ComboBox Width="150"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 15">
+                <TextBlock Style="{StaticResource CommonText}" Text="Target size" />
+                <ComboBox Width="150"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 15">
+                <TextBlock Style="{StaticResource CommonText}" Text="Target color" />
+                <ComboBox Width="150"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 15">
+                <TextBlock Style="{StaticResource CommonText}" Text="Target count" />
+                <ComboBox Width="150"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 15">
+                <TextBlock Style="{StaticResource CommonText}" Text="Time"/>
+                <ComboBox Width="150"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

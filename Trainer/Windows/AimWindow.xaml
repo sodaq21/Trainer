@@ -21,7 +21,7 @@
         </Grid>
         
         <Grid Grid.Row="0" Grid.Column="1">
-            <Button Style="{StaticResource ServiceBtn}" HorizontalAlignment="Right">
+            <Button Style="{StaticResource ServiceBtn}" HorizontalAlignment="Right" Click="SettingsBtn_Click">
                 <Image Source="/Assets/settings_light.png"/>
             </Button>
         </Grid>

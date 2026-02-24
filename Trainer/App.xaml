@@ -39,11 +39,19 @@
         <!--Headers-->
         <Style TargetType="TextBlock" x:Key="HeaderText">
             <Setter Property="FontSize" Value="26"/>
-            <Setter Property="FontFamily" Value="Elephant"/>
+            <Setter Property="FontFamily" Value="Bahnschrift"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Margin" Value="10"/>
         </Style>
-        
+
+        <!--Common text-->
+        <Style TargetType="TextBlock" x:Key="CommonText">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Bahnschrift"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="5 0 0 2"/>
+        </Style>
+
         <!--Service buttons-->
         <Style TargetType="Button" x:Key="ServiceBtn">
             <Setter Property="Background" Value="Transparent"/>

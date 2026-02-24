@@ -19,11 +19,11 @@ namespace Trainer.Windows
     /// </summary>
     public partial class ReactionWindow : Window
     {
-        MenuWindow mw;
-        public ReactionWindow(MenuWindow menuwindow)
+
+        public ReactionWindow()
         {
             InitializeComponent();
-            mw = menuwindow;
+
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
@@ -31,6 +31,10 @@ namespace Trainer.Windows
             if (e.Key == Key.Escape)
             {
                 this.Close();
+            }
+            if (e.Key == Key.End)
+            {
+                Application.Current.Shutdown();
             }
         }
     }

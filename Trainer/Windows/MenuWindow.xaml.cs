@@ -26,7 +26,7 @@ namespace Trainer.Windows
 
         private void AimBtn_Click(object sender, RoutedEventArgs e)
         {
-            AimWindow aimWindow = new AimWindow(this);
+            AimWindow aimWindow = new AimWindow();
             aimWindow.Owner = this;
             this.Hide();
             aimWindow.ShowDialog();
@@ -35,7 +35,7 @@ namespace Trainer.Windows
 
         private void ReactionBtn_Click(object sender, RoutedEventArgs e)
         {
-            ReactionWindow reactionWindow = new ReactionWindow(this);
+            ReactionWindow reactionWindow = new ReactionWindow();
             reactionWindow.Owner = this;
             this.Hide();
             reactionWindow.ShowDialog();

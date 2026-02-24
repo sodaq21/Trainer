@@ -19,11 +19,9 @@ namespace Trainer.Windows
     /// </summary>
     public partial class AimWindow : Window
     {
-        MenuWindow mw;
-        public AimWindow(MenuWindow menuWindow)
+        public AimWindow()
         {
             InitializeComponent();
-            mw = menuWindow;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -32,6 +30,16 @@ namespace Trainer.Windows
             {
                 this.Close();
             }
+            if (e.Key == Key.End)
+            {
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void SettingsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsWindow settingsWindow = new SettingsWindow();
+            settingsWindow.ShowDialog();
         }
     }
 }
