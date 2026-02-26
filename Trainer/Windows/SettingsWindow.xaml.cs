@@ -30,6 +30,7 @@ namespace Trainer.Windows
             {
                 Application.Current.Shutdown();
             }
+            
         }
     }
 }

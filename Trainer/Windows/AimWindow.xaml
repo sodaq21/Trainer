@@ -13,6 +13,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -25,5 +26,7 @@
                 <Image Source="/Assets/settings_light.png"/>
             </Button>
         </Grid>
+
+        <GridSplitter Grid.Row="1" Grid.ColumnSpan="2" Margin="5 0"/>
     </Grid>
 </Window>

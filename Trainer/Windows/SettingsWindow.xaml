@@ -5,19 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trainer.Windows"
         mc:Ignorable="d"
-        Title="Trainer" Height="450" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" KeyUp="Window_KeyUp">
+        Title="Trainer" Height="575" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" KeyUp="Window_KeyUp">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Style="{StaticResource HeaderText}" Text="Settings" HorizontalAlignment="Center" Margin="20"/>
+        <TextBlock Grid.Row="0" Style="{StaticResource HeaderText}" Text="Settings" HorizontalAlignment="Center" Margin="20 20 20 3"/>
         <!--size, color, window_size, count(of targets at the same time), time-->
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+
+        <GridSplitter Grid.Row="1" Margin="90 0 90 15"/>
+
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="2">
             <StackPanel Margin="0 0 0 15">
                 <TextBlock Style="{StaticResource CommonText}" Text="Window size" />
-                <ComboBox Width="150"/>
+                <ComboBox x:Name="WindowSize_cb" Width="150"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 15">
+                <TextBlock Style="{StaticResource CommonText}" Text="Sensitivity" />
+                <Grid HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Slider Margin="50 0 0 0" Grid.Column="0" Maximum="5" Minimum="0.1" Value="1" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="1" HorizontalAlignment="Right" Width="40" Height="25" VerticalAlignment="Center" Margin="5 0" FontSize="14"/>
+                </Grid>
             </StackPanel>
             <StackPanel Margin="0 0 0 15">
                 <TextBlock Style="{StaticResource CommonText}" Text="Target size" />
@@ -35,6 +50,7 @@
                 <TextBlock Style="{StaticResource CommonText}" Text="Time"/>
                 <ComboBox Width="150"/>
             </StackPanel>
+            <Button Width="100" Height="40" Content="Apply" HorizontalAlignment="Center" Background="#dddddd"/>
         </StackPanel>
     </Grid>
 </Window>
