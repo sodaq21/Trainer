@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trainer.Windows"
         mc:Ignorable="d"
-            Title="Trainer" Height="360" Width="450" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+            Title="Trainer - Menu" Height="360" Width="450" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="#dddddd">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -20,8 +20,8 @@
 
         <Grid Grid.Row="1">
             <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                <Button Style="{StaticResource MenuBtn}" Content="Aim trainer" Click="AimBtn_Click"/>
-                <Button Style="{StaticResource MenuBtn}" Content="Reaction test" Margin="0" Click="ReactionBtn_Click"/>
+                <Button Style="{StaticResource MenuBtn}" Content="Aim Trainer" Click="AimBtn_Click"/>
+                <Button Style="{StaticResource MenuBtn}" Content="Reaction Test" Margin="0" Click="ReactionBtn_Click"/>
             </StackPanel>
         </Grid>
 

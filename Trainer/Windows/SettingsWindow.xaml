@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trainer.Windows"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Trainer" Height="575" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" KeyUp="Window_KeyUp">
+        Title="Trainer - Settings" Height="575" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" KeyUp="Window_KeyUp">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -21,7 +22,13 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="2">
             <StackPanel Margin="0 0 0 15">
                 <TextBlock Style="{StaticResource CommonText}" Text="Window size" />
-                <ComboBox x:Name="WindowSize_cb" Width="150"/>
+                <ComboBox x:Name="WindowSize_cb" Width="150">
+                    <sys:String>640 × 360</sys:String>
+                    <sys:String>854 × 480</sys:String>
+                    <sys:String>960 × 540</sys:String>
+                    <sys:String>1280 × 720</sys:String>
+                    <sys:String>1920 × 1080</sys:String>
+                </ComboBox>
             </StackPanel>
             <StackPanel Margin="0 0 0 15">
                 <TextBlock Style="{StaticResource CommonText}" Text="Sensitivity" />
@@ -30,27 +37,53 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <Slider Margin="50 0 0 0" Grid.Column="0" Maximum="5" Minimum="0.1" Value="1" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" HorizontalAlignment="Right" Width="40" Height="25" VerticalAlignment="Center" Margin="5 0" FontSize="14"/>
+                    <Slider x:Name="Sensitivity_slider" Margin="50 0 0 0" Grid.Column="0" Maximum="5" Minimum="0.1" Value="1" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="1" HorizontalAlignment="Right" Width="40" Height="25" VerticalAlignment="Center" Margin="5 0" FontSize="14" Text="{Binding Path=Value, ElementName=Sensitivity_slider, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='{}{0:F2}', Delay=500}"/>
                 </Grid>
             </StackPanel>
             <StackPanel Margin="0 0 0 15">
                 <TextBlock Style="{StaticResource CommonText}" Text="Target size" />
-                <ComboBox Width="150"/>
+                <ComboBox x:Name="TargetSize_cb" Width="150">
+                    <sys:Int32>1</sys:Int32>
+                    <sys:Int32>2</sys:Int32>
+                    <sys:Int32>3</sys:Int32>
+                    <sys:Int32>4</sys:Int32>
+                    <sys:Int32>5</sys:Int32>
+                </ComboBox>
             </StackPanel>
             <StackPanel Margin="0 0 0 15">
                 <TextBlock Style="{StaticResource CommonText}" Text="Target color" />
-                <ComboBox Width="150"/>
+                <ComboBox x:Name="TargetColor_cb" Width="150">
+                    <sys:String>Black</sys:String>
+                    <sys:String>White</sys:String>
+                    <sys:String>Red</sys:String>
+                    <sys:String>Green</sys:String>
+                    <sys:String>Blue</sys:String>
+                    <sys:String>Purple</sys:String>
+                </ComboBox>
             </StackPanel>
             <StackPanel Margin="0 0 0 15">
                 <TextBlock Style="{StaticResource CommonText}" Text="Target count" />
-                <ComboBox Width="150"/>
+                <ComboBox x:Name="TargetCount_cb" Width="150">
+                    <sys:Int32>1</sys:Int32>
+                    <sys:Int32>2</sys:Int32>
+                    <sys:Int32>3</sys:Int32>
+                    <sys:Int32>4</sys:Int32>
+                    <sys:Int32>5</sys:Int32>
+                </ComboBox>
             </StackPanel>
             <StackPanel Margin="0 0 0 15">
                 <TextBlock Style="{StaticResource CommonText}" Text="Time"/>
-                <ComboBox Width="150"/>
+                <ComboBox x:Name="Time_cb" Width="150">
+                    <sys:Int32>10</sys:Int32>
+                    <sys:Int32>15</sys:Int32>
+                    <sys:Int32>20</sys:Int32>
+                    <sys:Int32>30</sys:Int32>
+                    <sys:Int32>45</sys:Int32>
+                    <sys:Int32>60</sys:Int32>
+                </ComboBox>
             </StackPanel>
-            <Button Width="100" Height="40" Content="Apply" HorizontalAlignment="Center" Background="#dddddd"/>
+            <Button x:Name="Apply_btn" Width="200" Height="40" Content="Apply" HorizontalAlignment="Center" Background="#dddddd" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Window>

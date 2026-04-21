@@ -7,12 +7,13 @@ using System.Windows.Media;
 
 namespace Trainer.Models
 {
-    internal class GameSettings
+    public class GameSettings
     {
-        private int _sizeTargets { get; set; }
-        private int _sizeTarget { get; set; }
-        private int _count { get; set; }
-        private Color _color { get; set; }
-        private int _seconds { get; set; }
+        public string windowSize = "854 × 480";
+        public double sensitivity = 1.0;
+        public int targetsSize = 1;
+        public string color = "Red";
+        public int count = 1;
+        public int seconds = 10;
     }
 }

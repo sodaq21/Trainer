@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trainer.Windows"
         mc:Ignorable="d"
-        Title="Trainer" Height="450" Width="800" PreviewKeyDown="Window_KeyDown" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Trainer - Aim" Height="480" Width="854" 
+        PreviewKeyDown="Window_KeyDown" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -28,5 +32,12 @@
         </Grid>
 
         <GridSplitter Grid.Row="1" Grid.ColumnSpan="2" Margin="5 0"/>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <Canvas x:Name="MainCanvas"
+                    Cursor="None" MouseMove="Window_MouseMove" MouseLeftButtonDown="MainCanvas_MouseLeftButtonDown">
+                <Image x:Name="Crosshair" 
+                 Width="20" Height="20" Source="/Assets/arrow.png"/>
+            </Canvas>
+        </Grid>
     </Grid>
 </Window>

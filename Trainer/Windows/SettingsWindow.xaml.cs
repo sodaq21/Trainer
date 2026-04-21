@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Trainer.Models;
 
 namespace Trainer.Windows
 {
@@ -19,9 +20,23 @@ namespace Trainer.Windows
     /// </summary>
     public partial class SettingsWindow : Window
     {
-        public SettingsWindow()
+        private GameSettings _gameSettings;
+        private AimWindow _aimWindow;
+        public SettingsWindow(AimWindow aw, GameSettings gs)
         {
             InitializeComponent();
+            _gameSettings = new GameSettings();
+            this._aimWindow = aw;
+            this._gameSettings = gs;
+            WindowSize_cb.SelectedValue = gs.windowSize;
+            TargetSize_cb.SelectedValue = gs.targetsSize;
+            Sensitivity_slider.Value = gs.sensitivity;
+            TargetColor_cb.SelectedValue = gs.color;
+            TargetCount_cb.SelectedValue = gs.count;
+            Time_cb.SelectedValue = gs.seconds;
+            // converting string color to solidcolorbrush
+            //Color clr = (Color)ColorConverter.ConvertFromString(gs.color);
+            //SolidColorBrush myBrush = new SolidColorBrush(clr);
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
@@ -30,7 +45,18 @@ namespace Trainer.Windows
             {
                 Application.Current.Shutdown();
             }
-            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            _gameSettings.windowSize = WindowSize_cb.SelectedValue.ToString();
+            _gameSettings.targetsSize = int.Parse(TargetSize_cb.SelectedValue.ToString());
+            _gameSettings.sensitivity = Sensitivity_slider.Value;
+            _gameSettings.color = TargetColor_cb.SelectedValue.ToString();
+            _gameSettings.count = int.Parse(TargetCount_cb.SelectedValue.ToString());
+            _gameSettings.seconds = int.Parse(Time_cb.SelectedValue.ToString());
+            _aimWindow.LoadSettings(_gameSettings);
+            this.Close();
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trainer.Windows"
         mc:Ignorable="d"
-        Title="ReactionWindow" Height="450" Width="800" PreviewKeyDown="Window_KeyUp" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Trainer - Reaction" Height="450" Width="800" PreviewKeyDown="Window_KeyUp" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         
     </Grid>
