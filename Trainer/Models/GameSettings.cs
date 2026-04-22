@@ -10,7 +10,7 @@ namespace Trainer.Models
     public class GameSettings
     {
         public string windowSize = "854 × 480";
-        public double sensitivity = 1.0;
+        //public double sensitivity = 1.0;
         public int targetsSize = 1;
         public string color = "Red";
         public int count = 1;

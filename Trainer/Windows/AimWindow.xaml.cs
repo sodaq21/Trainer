@@ -21,13 +21,16 @@ namespace Trainer.Windows
     public partial class AimWindow : Window
     {
         private GameSettings gameSettings;
-        private Point _lastMousePosition;
-        private double _virtualX;
-        private double _virtualY;
+        public int Score { get; set; }
+        private Random rnd;
+        //private Point _lastMousePosition;
+        //private double _virtualX;
+        //private double _virtualY;
         public AimWindow()
         {
             InitializeComponent();
             gameSettings = new GameSettings();
+            rnd = new Random();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -58,44 +61,69 @@ namespace Trainer.Windows
             this.Height = h;
         }
 
-        private void SensitivityChange(double sens)
+        private void TargetAdd()
         {
-
+            Button target = new Button();
+            double size = gameSettings.targetsSize * 10;
+            // converting string color to solidcolorbrush
+            Color clr = (Color)ColorConverter.ConvertFromString(gameSettings.color);
+            SolidColorBrush btn_color = new SolidColorBrush(clr);
+            target.Background = btn_color;
+            target.Width = size;
+            target.Height = size;
+            PlayArea.Children.Add(target);
+            double x = rnd.Next(Convert.ToInt32(0 + size), Convert.ToInt32(PlayArea.Width - size));
+            double y = rnd.Next(Convert.ToInt32(0 + size), Convert.ToInt32(PlayArea.Height - size));
         }
 
-        private void Window_MouseMove(object sender, MouseEventArgs e)
+        private void Start(object sender, RoutedEventArgs e)
         {
-            Point currentRealPos = e.GetPosition(MainCanvas);
-
-            // Если это первое движение, просто запоминаем позицию и выходим
-            if (_lastMousePosition == new Point(0, 0))
+            PlayArea.Children.Clear();
+            Score = 0;
+            for (int i = 0; i < gameSettings.count; i++)
             {
-                _lastMousePosition = currentRealPos;
-                return;
+                TargetAdd();
             }
-
-            // Считаем дельту (на сколько сдвинулась физическая мышка)
-            double deltaX = currentRealPos.X - _lastMousePosition.X;
-            double deltaY = currentRealPos.Y - _lastMousePosition.Y;
-
-            // Применяем чувствительность
-            _virtualX += deltaX * gameSettings.sensitivity;
-            _virtualY += deltaY * gameSettings.sensitivity;
-
-            // Ограничиваем прицел рамками Canvas (Способ без Math.Clamp)
-            _virtualX = Math.Min(Math.Max(_virtualX, 0), MainCanvas.ActualWidth);
-            _virtualY = Math.Min(Math.Max(_virtualY, 0), MainCanvas.ActualHeight);
-
-            // Сдвигаем нарисованный прицел (смещаем на половину ширины/высоты, чтобы центр был на координатах)
-            Canvas.SetLeft(Crosshair, _virtualX - (Crosshair.Width / 2));
-            Canvas.SetTop(Crosshair, _virtualY - (Crosshair.Height / 2));
-
-            _lastMousePosition = currentRealPos;
         }
 
-        private void MainCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
+        //private void SensitivityChange(double sens)
+        //{
 
-        }
+        //}
+
+        //private void Window_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    Point currentRealPos = e.GetPosition(MainCanvas);
+
+        //    // Если это первое движение, просто запоминаем позицию и выходим
+        //    if (_lastMousePosition == new Point(0, 0))
+        //    {
+        //        _lastMousePosition = currentRealPos;
+        //        return;
+        //    }
+
+        //    // Считаем дельту (на сколько сдвинулась физическая мышка)
+        //    double deltaX = currentRealPos.X - _lastMousePosition.X;
+        //    double deltaY = currentRealPos.Y - _lastMousePosition.Y;
+
+        //    // Применяем чувствительность
+        //    _virtualX += deltaX * gameSettings.sensitivity;
+        //    _virtualY += deltaY * gameSettings.sensitivity;
+
+        //    // Ограничиваем прицел рамками Canvas (Способ без Math.Clamp)
+        //    _virtualX = Math.Min(Math.Max(_virtualX, 0), MainCanvas.ActualWidth);
+        //    _virtualY = Math.Min(Math.Max(_virtualY, 0), MainCanvas.ActualHeight);
+
+        //    // Сдвигаем нарисованный прицел (смещаем на половину ширины/высоты, чтобы центр был на координатах)
+        //    Canvas.SetLeft(Crosshair, _virtualX - (Crosshair.Width / 2));
+        //    Canvas.SetTop(Crosshair, _virtualY - (Crosshair.Height / 2));
+
+        //    _lastMousePosition = currentRealPos;
+        //}
+
+        //private void MainCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        //{
+
+        //}
     }
 }

@@ -8,22 +8,24 @@
             Title="Trainer - Menu" Height="360" Width="450" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="#dddddd">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0">
-            <Button HorizontalAlignment="Right" Style="{StaticResource ServiceBtn}">
-                <Image Source="/Assets/dark.png"/>
-            </Button>
-        </StackPanel>
+        <TextBlock Margin="0 45 0 0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" 
+                   Style="{StaticResource HeaderText}" Text="Choose the mode:" FontSize="30"/>
+        <Button Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource MenuBtn}" Content="Aim Trainer" Click="AimBtn_Click"
+                Margin="0 15"/>
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource MenuBtn}" Content="Reaction Test" Click="ReactionBtn_Click"
+                Margin="0 15"/>
 
-        <Grid Grid.Row="1">
-            <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                <Button Style="{StaticResource MenuBtn}" Content="Aim Trainer" Click="AimBtn_Click"/>
-                <Button Style="{StaticResource MenuBtn}" Content="Reaction Test" Margin="0" Click="ReactionBtn_Click"/>
-            </StackPanel>
-        </Grid>
-
+        <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource ServiceBtn}">
+            <Image Source="/Assets/dark.png"/>
+        </Button>
     </Grid>
 </Window>
