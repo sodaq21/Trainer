@@ -1,36 +1,58 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Trainer.Models;
+using System.Windows.Threading;
 
 namespace Trainer.Windows
 {
     /// <summary>
     /// Логика взаимодействия для Aim.xaml
     /// </summary>
-    public partial class AimWindow : Window
+    public partial class AimWindow : Window, INotifyPropertyChanged
     {
-        private GameSettings gameSettings;
-        public int Score { get; set; }
-        private Random rnd;
-        //private Point _lastMousePosition;
-        //private double _virtualX;
-        //private double _virtualY;
+        private DispatcherTimer _timer = new DispatcherTimer();
+        private SolidColorBrush btn_color = new SolidColorBrush();
+        private BrushConverter converter = new BrushConverter();
+        private GameSettings gameSettings = new GameSettings();
+        private Random rnd = new Random();
+        private int _score;
+        public int Score
+        {
+            get => _score;
+            set
+            {
+                _score = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _seconds;
+        public int Seconds
+        {
+            get => _seconds;
+            set
+            {
+                _seconds = value;
+                OnPropertyChanged();
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+
         public AimWindow()
         {
             InitializeComponent();
-            gameSettings = new GameSettings();
-            rnd = new Random();
+            this.DataContext = this;
+            _timer.Tick += _timer_Tick;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -47,13 +69,17 @@ namespace Trainer.Windows
 
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)
         {
-            SettingsWindow settingsWindow = new SettingsWindow(this, gameSettings);
-            settingsWindow.Owner = this;
-            settingsWindow.ShowDialog();
+            if (!_timer.IsEnabled)
+            {
+                SettingsWindow settingsWindow = new SettingsWindow(this, gameSettings);
+                settingsWindow.Owner = this;
+                settingsWindow.ShowDialog();
+            }
         }
 
         public void LoadSettings(GameSettings gs)
         {
+            // setting window size
             gameSettings = gs;
             double w = double.Parse(gameSettings.windowSize.Substring(0, gameSettings.windowSize.IndexOf(' ')));
             double h = double.Parse(gameSettings.windowSize.Substring(gameSettings.windowSize.LastIndexOf(' ')));
@@ -64,20 +90,33 @@ namespace Trainer.Windows
         private void TargetAdd()
         {
             Button target = new Button();
-            double size = gameSettings.targetsSize * 10;
-            // converting string color to solidcolorbrush
-            Color clr = (Color)ColorConverter.ConvertFromString(gameSettings.color);
-            SolidColorBrush btn_color = new SolidColorBrush(clr);
-            target.Background = btn_color;
-            target.Width = size;
-            target.Height = size;
+            double size = gameSettings.targetsSize * 10.0;
+            Border border = new Border
+            {
+                CornerRadius = new CornerRadius(size / 2),
+                Background = btn_color,
+                Width = size,
+                Height = size
+            };
+            target.Content = border;
+            target.BorderThickness = new Thickness(0);
+            target.Background = Brushes.Transparent;
+            target.Click += TargetClick;
             PlayArea.Children.Add(target);
-            double x = rnd.Next(Convert.ToInt32(0 + size), Convert.ToInt32(PlayArea.Width - size));
-            double y = rnd.Next(Convert.ToInt32(0 + size), Convert.ToInt32(PlayArea.Height - size));
+            double x = rnd.Next(0, (int)(PlayArea.ActualWidth - size));
+            double y = rnd.Next(0, (int)(PlayArea.ActualHeight - size));
+            Canvas.SetLeft(target, x);
+            Canvas.SetTop(target, y);
         }
 
         private void Start(object sender, RoutedEventArgs e)
         {
+            // timer
+            _timer.Interval = TimeSpan.FromSeconds(1);
+            _timer.Start();
+            Seconds = gameSettings.seconds;
+
+            btn_color = (SolidColorBrush)converter.ConvertFromString(gameSettings.color);
             PlayArea.Children.Clear();
             Score = 0;
             for (int i = 0; i < gameSettings.count; i++)
@@ -86,44 +125,29 @@ namespace Trainer.Windows
             }
         }
 
-        //private void SensitivityChange(double sens)
-        //{
+        private void _timer_Tick(object sender, EventArgs e)
+        {
+            Seconds--;
+            if (_seconds == 0)
+            {
+                _timer.Stop();
+                EndGame();
+            }
+        }
 
-        //}
+        private void EndGame()
+        {
+            PlayArea.Children.Clear();
+            MessageBox.Show($"Your score = {Score}!", "Trainer - Game Over", MessageBoxButton.OK, MessageBoxImage.Information);
+            Seconds = 0;
+        }
 
-        //private void Window_MouseMove(object sender, MouseEventArgs e)
-        //{
-        //    Point currentRealPos = e.GetPosition(MainCanvas);
-
-        //    // Если это первое движение, просто запоминаем позицию и выходим
-        //    if (_lastMousePosition == new Point(0, 0))
-        //    {
-        //        _lastMousePosition = currentRealPos;
-        //        return;
-        //    }
-
-        //    // Считаем дельту (на сколько сдвинулась физическая мышка)
-        //    double deltaX = currentRealPos.X - _lastMousePosition.X;
-        //    double deltaY = currentRealPos.Y - _lastMousePosition.Y;
-
-        //    // Применяем чувствительность
-        //    _virtualX += deltaX * gameSettings.sensitivity;
-        //    _virtualY += deltaY * gameSettings.sensitivity;
-
-        //    // Ограничиваем прицел рамками Canvas (Способ без Math.Clamp)
-        //    _virtualX = Math.Min(Math.Max(_virtualX, 0), MainCanvas.ActualWidth);
-        //    _virtualY = Math.Min(Math.Max(_virtualY, 0), MainCanvas.ActualHeight);
-
-        //    // Сдвигаем нарисованный прицел (смещаем на половину ширины/высоты, чтобы центр был на координатах)
-        //    Canvas.SetLeft(Crosshair, _virtualX - (Crosshair.Width / 2));
-        //    Canvas.SetTop(Crosshair, _virtualY - (Crosshair.Height / 2));
-
-        //    _lastMousePosition = currentRealPos;
-        //}
-
-        //private void MainCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        //{
-
-        //}
+        private void TargetClick(object sender, RoutedEventArgs e)
+        {
+            Button trg = (Button)(sender);
+            PlayArea.Children.Remove(trg);
+            TargetAdd();
+            Score++;
+        }
     }
 }
