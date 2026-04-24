@@ -22,7 +22,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0">
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <TextBlock Text="Aim Trainer" Style="{StaticResource HeaderText}"/>
         </Grid>
         
@@ -34,12 +34,21 @@
 
         <GridSplitter Grid.Row="1" Grid.ColumnSpan="2" Margin="5 0" IsEnabled="False"/>
 
-        <Button Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalContentAlignment="Center" Background="GhostWhite" Click="Start">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="/Assets/settings_light.png" Height="15" Margin="4 2"/>
-                <TextBlock Text="Start"/>
-            </StackPanel>
-        </Button>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" >
+            <Button VerticalContentAlignment="Center" Background="#acacac" Click="Start">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Assets/settings_light.png" Height="15" Margin="4 2"/>
+                    <TextBlock Text="Start"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="StopButton" VerticalContentAlignment="Center" Background="#acacac" Click="StopButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Assets/settings_light.png" Height="15" Margin="4 2"/>
+                    <TextBlock Text="Stop"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        
 
         <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Style="{StaticResource CommonText}"
                  Text="{Binding Score, StringFormat=Score: {0}}"  Margin="10 5"/>

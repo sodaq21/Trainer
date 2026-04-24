@@ -31,7 +31,7 @@ namespace Trainer.Windows
             WindowSize_cb.SelectedValue = gs.windowSize;
             TargetSize_cb.SelectedValue = gs.targetsSize;
             //Sensitivity_slider.Value = gs.sensitivity;
-            TargetColor_cb.SelectedValue = gs.color;
+            //TargetColor_cb.SelectedValue = gs.color;
             TargetCount_cb.SelectedValue = gs.count;
             Time_cb.SelectedValue = gs.seconds;
 
@@ -50,7 +50,8 @@ namespace Trainer.Windows
             _gameSettings.windowSize = WindowSize_cb.SelectedValue.ToString();
             _gameSettings.targetsSize = int.Parse(TargetSize_cb.SelectedValue.ToString());
             //_gameSettings.sensitivity = Sensitivity_slider.Value;
-            _gameSettings.color = TargetColor_cb.SelectedValue.ToString();
+            //_gameSettings.color = TargetColor_cb.SelectedValue.ToString();
+            _gameSettings.color = color_picker.SelectedColor;
             _gameSettings.count = int.Parse(TargetCount_cb.SelectedValue.ToString());
             _gameSettings.seconds = int.Parse(Time_cb.SelectedValue.ToString());
             _aimWindow.LoadSettings(_gameSettings);

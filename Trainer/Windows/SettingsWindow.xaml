@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trainer.Windows"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="Trainer - Settings" Height="500" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" KeyUp="Window_KeyUp">
     <Grid>
@@ -53,14 +54,19 @@
             </StackPanel>
             <StackPanel Margin="0 0 0 15">
                 <TextBlock Style="{StaticResource CommonText}" Text="Target color" />
-                <ComboBox x:Name="TargetColor_cb" Width="150">
+                <!--<ComboBox x:Name="TargetColor_cb" Width="150">
                     <sys:String>Black</sys:String>
                     <sys:String>White</sys:String>
                     <sys:String>Red</sys:String>
                     <sys:String>Green</sys:String>
                     <sys:String>Blue</sys:String>
                     <sys:String>Purple</sys:String>
-                </ComboBox>
+                </ComboBox>-->
+                <xctk:ColorPicker x:Name="color_picker" HorizontalAlignment="Center" Width="150" UsingAlphaChannel="False" 
+                                  ShowRecentColors="True"
+                                  ColorMode="ColorCanvas"
+                                  ShowStandardColors="False" SelectedColor="Red">
+                </xctk:ColorPicker>
             </StackPanel>
             <StackPanel Margin="0 0 0 15">
                 <TextBlock Style="{StaticResource CommonText}" Text="Target count" />

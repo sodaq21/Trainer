@@ -37,5 +37,10 @@ namespace Trainer.Windows
                 Application.Current.Shutdown();
             }
         }
+
+        private void ReactionClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

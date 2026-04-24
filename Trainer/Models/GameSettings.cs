@@ -12,7 +12,7 @@ namespace Trainer.Models
         public string windowSize = "854 × 480";
         //public double sensitivity = 1.0;
         public int targetsSize = 1;
-        public string color = "Red";
+        public Color? color = Colors.Red;
         public int count = 1;
         public int seconds = 10;
     }

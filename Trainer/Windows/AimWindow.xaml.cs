@@ -53,6 +53,8 @@ namespace Trainer.Windows
             InitializeComponent();
             this.DataContext = this;
             _timer.Tick += _timer_Tick;
+            StopButton.IsEnabled = false;
+
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -85,6 +87,8 @@ namespace Trainer.Windows
             double h = double.Parse(gameSettings.windowSize.Substring(gameSettings.windowSize.LastIndexOf(' ')));
             this.Width = w;
             this.Height = h;
+            this.Left = (SystemParameters.PrimaryScreenWidth - w) / 2;
+            this.Top = (SystemParameters.PrimaryScreenHeight - h) / 2;
         }
 
         private void TargetAdd()
@@ -116,13 +120,14 @@ namespace Trainer.Windows
             _timer.Start();
             Seconds = gameSettings.seconds;
 
-            btn_color = (SolidColorBrush)converter.ConvertFromString(gameSettings.color);
+            btn_color = (SolidColorBrush)converter.ConvertFromString(gameSettings.color.ToString());
             PlayArea.Children.Clear();
             Score = 0;
             for (int i = 0; i < gameSettings.count; i++)
             {
                 TargetAdd();
             }
+            StopButton.IsEnabled = true;
         }
 
         private void _timer_Tick(object sender, EventArgs e)
@@ -148,6 +153,13 @@ namespace Trainer.Windows
             PlayArea.Children.Remove(trg);
             TargetAdd();
             Score++;
+        }
+
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            _timer.Stop();
+            EndGame();
+            StopButton.IsEnabled = false;
         }
     }
 }

@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trainer.Windows"
         mc:Ignorable="d"
-        Title="Trainer - Reaction" Height="450" Width="800" PreviewKeyDown="Window_KeyUp" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Trainer - Reaction" Height="300" Width="500" PreviewKeyDown="Window_KeyUp" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <TextBlock Text="Reaction Test" Style="{StaticResource HeaderText}"/>
+        </Grid>
+
+        <GridSplitter Grid.Row="1" Grid.ColumnSpan="2" Margin="5 0" IsEnabled="False"/>
+
+        <Grid Grid.Row="2">
+            <Button Click="ReactionClick">
+                <Border CornerRadius="20" Background="#cccccc" Width="300" Height="150">
+                    <TextBlock Text="Click!" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Button>
+        </Grid>
     </Grid>
 </Window>
