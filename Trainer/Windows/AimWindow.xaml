@@ -3,18 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Trainer.Windows"
         mc:Ignorable="d"
-        Title="Trainer - Aim" Height="480" Width="854" 
-        PreviewKeyDown="Window_KeyDown" 
-        ResizeMode="NoResize" 
+        Title="Trainer - Aim" Height="480" Width="854"
+        PreviewKeyDown="Window_KeyDown"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
-    
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+
+    <Grid Margin="16">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -22,46 +17,34 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-            <TextBlock Text="Aim Trainer" Style="{StaticResource HeaderText}"/>
-        </Grid>
-        
-        <Grid Grid.Row="0" Grid.Column="1">
-            <Button Style="{StaticResource ServiceBtn}" HorizontalAlignment="Right" Click="SettingsBtn_Click">
-                <Image Source="/Assets/settings_light.png"/>
-            </Button>
+        <Grid Grid.Row="0">
+            <Button Style="{StaticResource ServiceBtn}" HorizontalAlignment="Left" Click="Exit_Click" Content="←" FontSize="18"/>
+            <TextBlock Text="Aim Trainer" Style="{StaticResource HeaderText}" HorizontalAlignment="Center"/>
+            <Button Style="{StaticResource ServiceBtn}" HorizontalAlignment="Right" Click="SettingsBtn_Click" Content="⚙" FontSize="16"/>
         </Grid>
 
-        <Grid Grid.Row="0" Grid.Column="0">
-            <Button Style="{StaticResource ServiceBtn}" HorizontalAlignment="Left" Click="Exit_Click">
-                <Image Source="/Assets/arrow.png"/>
-            </Button>
+        <GridSplitter Grid.Row="1" IsEnabled="False"/>
+
+        <Grid Grid.Row="2" Margin="0,0,0,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Style="{StaticResource CommonText}" HorizontalAlignment="Left"
+                       Text="{Binding Score, StringFormat=Score: {0}}" VerticalAlignment="Center"/>
+
+            <Button Grid.Column="1" VerticalContentAlignment="Center" Click="Start" Content="▶ Start"/>
+            <Button x:Name="StopButton" Grid.Column="2" VerticalContentAlignment="Center" Click="StopButton_Click" Content="■ Stop"/>
+
+            <TextBlock Grid.Column="3" Style="{StaticResource CommonText}" HorizontalAlignment="Right"
+                       Text="{Binding Seconds, StringFormat=Time: {0}s}" VerticalAlignment="Center"/>
         </Grid>
 
-        <GridSplitter Grid.Row="1" Grid.ColumnSpan="2" Margin="5 0" IsEnabled="False"/>
-
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" >
-            <Button VerticalContentAlignment="Center" Background="#acacac" Click="Start">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Assets/settings_light.png" Height="15" Margin="4 2"/>
-                    <TextBlock Text="Start"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="StopButton" VerticalContentAlignment="Center" Background="#acacac" Click="StopButton_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Assets/settings_light.png" Height="15" Margin="4 2"/>
-                    <TextBlock Text="Stop"/>
-                </StackPanel>
-            </Button>
-        </StackPanel>
-        
-
-        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Style="{StaticResource CommonText}"
-                 Text="{Binding Score, StringFormat=Score: {0}}"  Margin="10 5"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Style="{StaticResource CommonText}"
-           Text="{Binding Seconds}" Margin="10 5"/>
-        <Canvas Grid.Row="3" Grid.ColumnSpan="2" Margin="20" x:Name="PlayArea">
-            
-        </Canvas>
+        <Border Grid.Row="3" Style="{StaticResource SurfacePanel}" Padding="0">
+            <Canvas Margin="8" x:Name="PlayArea" Background="{DynamicResource Brush.Background}"/>
+        </Border>
     </Grid>
 </Window>

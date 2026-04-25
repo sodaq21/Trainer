@@ -3,93 +3,68 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Trainer.Windows"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Trainer - Settings" Height="500" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" KeyUp="Window_KeyUp">
-    <Grid>
+        Title="Trainer - Settings" Height="560" Width="420" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" KeyUp="Window_KeyUp">
+    <Grid Margin="16">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Style="{StaticResource HeaderText}" Text="Settings" HorizontalAlignment="Center" Margin="20 20 20 3"/>
-        <!--size, color, window_size, count(of targets at the same time), time-->
+        <TextBlock Grid.Row="0" Style="{StaticResource HeaderText}" Text="Settings" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+        <GridSplitter Grid.Row="1" IsEnabled="False"/>
 
-        <GridSplitter Grid.Row="1" Margin="90 0 90 15" IsEnabled="False"/>
+        <Border Grid.Row="2" Style="{StaticResource SurfacePanel}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource CommonText}" Text="Window size" />
+                    <ComboBox x:Name="WindowSize_cb">
+                        <sys:String>640 × 360</sys:String>
+                        <sys:String>854 × 480</sys:String>
+                        <sys:String>960 × 540</sys:String>
+                        <sys:String>1280 × 720</sys:String>
+                        <sys:String>1920 × 1080</sys:String>
+                    </ComboBox>
 
-        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="2">
-            <StackPanel Margin="0 0 0 15">
-                <TextBlock Style="{StaticResource CommonText}" Text="Window size" />
-                <ComboBox x:Name="WindowSize_cb" Width="150">
-                    <sys:String>640 × 360</sys:String>
-                    <sys:String>854 × 480</sys:String>
-                    <sys:String>960 × 540</sys:String>
-                    <sys:String>1280 × 720</sys:String>
-                    <sys:String>1920 × 1080</sys:String>
-                </ComboBox>
-            </StackPanel>
-            <!--<StackPanel Margin="0 0 0 15">
-                <TextBlock Style="{StaticResource CommonText}" Text="Sensitivity" />
-                <Grid HorizontalAlignment="Center">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Slider x:Name="Sensitivity_slider" Margin="50 0 0 0" Grid.Column="0" Maximum="5" Minimum="0.1" Value="1" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBox Grid.Column="1" HorizontalAlignment="Right" Width="40" Height="25" VerticalAlignment="Center" Margin="5 0" FontSize="14" Text="{Binding Path=Value, ElementName=Sensitivity_slider, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='{}{0:F2}', Delay=500}"/>
-                </Grid>
-            </StackPanel>-->
-            <StackPanel Margin="0 0 0 15">
-                <TextBlock Style="{StaticResource CommonText}" Text="Target size" />
-                <ComboBox x:Name="TargetSize_cb" Width="150">
-                    <sys:Int32>1</sys:Int32>
-                    <sys:Int32>2</sys:Int32>
-                    <sys:Int32>3</sys:Int32>
-                    <sys:Int32>4</sys:Int32>
-                    <sys:Int32>5</sys:Int32>
-                </ComboBox>
-            </StackPanel>
-            <StackPanel Margin="0 0 0 15">
-                <TextBlock Style="{StaticResource CommonText}" Text="Target color" />
-                <!--<ComboBox x:Name="TargetColor_cb" Width="150">
-                    <sys:String>Black</sys:String>
-                    <sys:String>White</sys:String>
-                    <sys:String>Red</sys:String>
-                    <sys:String>Green</sys:String>
-                    <sys:String>Blue</sys:String>
-                    <sys:String>Purple</sys:String>
-                </ComboBox>-->
-                <xctk:ColorPicker x:Name="color_picker" HorizontalAlignment="Center" Width="150" UsingAlphaChannel="False" 
-                                  ShowRecentColors="True"
-                                  ColorMode="ColorCanvas"
-                                  ShowStandardColors="False" SelectedColor="Red">
-                </xctk:ColorPicker>
-            </StackPanel>
-            <StackPanel Margin="0 0 0 15">
-                <TextBlock Style="{StaticResource CommonText}" Text="Target count" />
-                <ComboBox x:Name="TargetCount_cb" Width="150">
-                    <sys:Int32>1</sys:Int32>
-                    <sys:Int32>2</sys:Int32>
-                    <sys:Int32>3</sys:Int32>
-                    <sys:Int32>4</sys:Int32>
-                    <sys:Int32>5</sys:Int32>
-                </ComboBox>
-            </StackPanel>
-            <StackPanel Margin="0 0 0 15">
-                <TextBlock Style="{StaticResource CommonText}" Text="Time"/>
-                <ComboBox x:Name="Time_cb" Width="150">
-                    <sys:Int32>10</sys:Int32>
-                    <sys:Int32>15</sys:Int32>
-                    <sys:Int32>20</sys:Int32>
-                    <sys:Int32>30</sys:Int32>
-                    <sys:Int32>45</sys:Int32>
-                    <sys:Int32>60</sys:Int32>
-                </ComboBox>
-            </StackPanel>
-            <Button x:Name="Apply_btn" Width="200" Height="40" Content="Apply" HorizontalAlignment="Center" Background="#dddddd" Click="Button_Click"/>
-        </StackPanel>
+                    <TextBlock Style="{StaticResource CommonText}" Text="Target size" />
+                    <ComboBox x:Name="TargetSize_cb">
+                        <sys:Int32>1</sys:Int32>
+                        <sys:Int32>2</sys:Int32>
+                        <sys:Int32>3</sys:Int32>
+                        <sys:Int32>4</sys:Int32>
+                        <sys:Int32>5</sys:Int32>
+                    </ComboBox>
+
+                    <TextBlock Style="{StaticResource CommonText}" Text="Target color" />
+                    <xctk:ColorPicker x:Name="color_picker" HorizontalAlignment="Left" Width="190" UsingAlphaChannel="False"
+                                      ShowRecentColors="True" ColorMode="ColorCanvas" ShowStandardColors="False" SelectedColor="Red"
+                                      Margin="0,0,0,10"/>
+
+                    <TextBlock Style="{StaticResource CommonText}" Text="Target count" />
+                    <ComboBox x:Name="TargetCount_cb">
+                        <sys:Int32>1</sys:Int32>
+                        <sys:Int32>2</sys:Int32>
+                        <sys:Int32>3</sys:Int32>
+                        <sys:Int32>4</sys:Int32>
+                        <sys:Int32>5</sys:Int32>
+                    </ComboBox>
+
+                    <TextBlock Style="{StaticResource CommonText}" Text="Time (seconds)"/>
+                    <ComboBox x:Name="Time_cb">
+                        <sys:Int32>10</sys:Int32>
+                        <sys:Int32>15</sys:Int32>
+                        <sys:Int32>20</sys:Int32>
+                        <sys:Int32>30</sys:Int32>
+                        <sys:Int32>45</sys:Int32>
+                        <sys:Int32>60</sys:Int32>
+                    </ComboBox>
+
+                    <Button x:Name="Apply_btn" Width="220" Height="42" Content="Apply" HorizontalAlignment="Center" Click="Button_Click" Margin="0,10,0,0"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
     </Grid>
 </Window>
