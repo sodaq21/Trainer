@@ -161,5 +161,9 @@ namespace Trainer.Windows
             EndGame();
             StopButton.IsEnabled = false;
         }
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

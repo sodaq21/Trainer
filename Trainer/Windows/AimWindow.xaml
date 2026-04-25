@@ -32,6 +32,12 @@
             </Button>
         </Grid>
 
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Button Style="{StaticResource ServiceBtn}" HorizontalAlignment="Left" Click="Exit_Click">
+                <Image Source="/Assets/arrow.png"/>
+            </Button>
+        </Grid>
+
         <GridSplitter Grid.Row="1" Grid.ColumnSpan="2" Margin="5 0" IsEnabled="False"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" >
