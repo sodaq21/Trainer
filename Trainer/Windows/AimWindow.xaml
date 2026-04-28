@@ -34,24 +34,32 @@
 
         <Grid Grid.Row="0" Grid.Column="0">
             <Button Style="{StaticResource ServiceBtn}" HorizontalAlignment="Left" Click="Exit_Click">
-                <Image Source="/Assets/arrow.png"/>
+                <Image Source="/Assets/return_light.png"/>
             </Button>
         </Grid>
 
         <GridSplitter Grid.Row="1" Grid.ColumnSpan="2" Margin="5 0" IsEnabled="False"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" >
-            <Button VerticalContentAlignment="Center" Background="#acacac" Click="Start">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Assets/settings_light.png" Height="15" Margin="4 2"/>
-                    <TextBlock Text="Start"/>
-                </StackPanel>
+            <Button Width="100" VerticalContentAlignment="Center" Background="#acacac" Click="Start">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="/Assets/play_light.png" Height="25" Margin="0 0 5 0"/>
+                    <TextBlock Grid.Column="1" Text="Start"/>
+                </Grid>
             </Button>
-            <Button x:Name="StopButton" VerticalContentAlignment="Center" Background="#acacac" Click="StopButton_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Assets/settings_light.png" Height="15" Margin="4 2"/>
-                    <TextBlock Text="Stop"/>
-                </StackPanel>
+            <Button Width="100" x:Name="StopButton" VerticalContentAlignment="Center" Background="#acacac" Click="StopButton_Click">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="/Assets/stop_light.png" Height="25" Margin="0 0 5 0"/>
+                    <TextBlock Grid.Column="1" Text="Stop"/>
+                </Grid>
             </Button>
         </StackPanel>
         

@@ -19,13 +19,31 @@
 
         <TextBlock Margin="0 45 0 0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" 
                    Style="{StaticResource HeaderText}" Text="Choose the mode:" FontSize="30"/>
-        <Button Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource MenuBtn}" Content="Aim Trainer" Click="AimBtn_Click"
-                Margin="0 15"/>
-        <Button Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource MenuBtn}" Content="Reaction Time" Click="ReactionBtn_Click"
-                Margin="0 15"/>
+        <Button Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource MenuBtn}" Click="AimBtn_Click" Margin="10 15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="/Assets/crosshair_light.png" Height="45" Margin="-18 0 20 0"/>
+                <TextBlock Grid.Column="1" Text="Aim Trainer"/>
+            </Grid>
+        </Button>
+        
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource MenuBtn}" Click="ReactionBtn_Click"
+                Margin="0 15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="/Assets/timer_light.png" Height="35" Margin="4 2"/>
+                <TextBlock Grid.Column="1" Text="Reaction Time"/>
+            </Grid>
+        </Button>
 
         <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource ServiceBtn}">
-            <Image Source="/Assets/dark.png"/>
+            <Image Source="/Assets/light.png"/>
         </Button>
     </Grid>
 </Window>

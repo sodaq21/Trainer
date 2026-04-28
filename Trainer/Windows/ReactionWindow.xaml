@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" HorizontalAlignment="Stretch">
             <Button Style="{StaticResource ServiceBtn}" HorizontalAlignment="Left" Click="Exit">
-                    <Image Source="/Assets/arrow.png"/>
+                    <Image Source="/Assets/return_light.png"/>
             </Button>
             <TextBlock Text="Reaction Time Test" Style="{StaticResource HeaderText}" HorizontalAlignment="Center"/>
         </Grid>

@@ -152,20 +152,34 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\switch_theme.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\settings_dark.png" />
     <Resource Include="Assets\settings_light.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\dark.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\light.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\arrow.png" />
+    <Resource Include="Assets\dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\return_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\crosshair_dark.png" />
+    <Resource Include="Assets\crosshair_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\return_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\play_dark.png" />
+    <Resource Include="Assets\play_light.png" />
+    <Resource Include="Assets\stop_dark.png" />
+    <Resource Include="Assets\stop_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\timer_dark.png" />
+    <Resource Include="Assets\timer_light.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

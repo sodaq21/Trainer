@@ -85,7 +85,7 @@ namespace Trainer.Windows
             cts?.Cancel();
             cts = new CancellationTokenSource();
             border.Background = Brushes.Red;
-            txt.Text = "Wait..";
+            txt.Text = "Wait...";
             try
             {
                 await Task.Delay(rnd.Next(1000, 5000), cts.Token);
