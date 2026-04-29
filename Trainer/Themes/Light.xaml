@@ -1,4 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+    <SolidColorBrush x:Key="WindowBg" Color="#E2E2E2"/>
+    <SolidColorBrush x:Key="CardBg" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="PrimaryText" Color="#1A1A1A"/>
+    <SolidColorBrush x:Key="SecondaryText" Color="#252525"/>
+    <SolidColorBrush x:Key="AccentColor" Color="#007AFF"/>
+    <!-- Классический синий -->
+    <SolidColorBrush x:Key="ButtonHover" Color="#F1F1F1"/>
+
+    <BitmapImage x:Key="SettingsIcon" UriSource="/Assets/settings_light.png"/>
+    <BitmapImage x:Key="CrosshairIcon" UriSource="/Assets/crosshair_light.png"/>
+    <BitmapImage x:Key="SwitchIcon" UriSource="/Assets/light.png"/>
+    <BitmapImage x:Key="PlayIcon" UriSource="/Assets/play_light.png"/>
+    <BitmapImage x:Key="StopIcon" UriSource="/Assets/stop_light.png"/>
+    <BitmapImage x:Key="TimerIcon" UriSource="/Assets/timer_light.png"/>
+    <BitmapImage x:Key="ReturnIcon" UriSource="/Assets/return_light.png"/>
 </ResourceDictionary>

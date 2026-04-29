@@ -102,6 +102,7 @@ namespace Trainer.Windows
                 Width = size,
                 Height = size
             };
+            target.Cursor = Cursors.Hand;
             target.Content = border;
             target.BorderThickness = new Thickness(0);
             target.Background = Brushes.Transparent;
@@ -145,6 +146,7 @@ namespace Trainer.Windows
             PlayArea.Children.Clear();
             MessageBox.Show($"Your score = {Score}!", "Trainer - Game Over", MessageBoxButton.OK, MessageBoxImage.Information);
             Seconds = 0;
+            StopButton.IsEnabled = false;
         }
 
         private void TargetClick(object sender, RoutedEventArgs e)
@@ -163,6 +165,7 @@ namespace Trainer.Windows
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
+            _timer.Stop();
             this.Close();
         }
     }

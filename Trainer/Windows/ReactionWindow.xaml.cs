@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -69,7 +70,7 @@ namespace Trainer.Windows
                 {
                     stopwatch.Stop();
                     ms = stopwatch.ElapsedMilliseconds;
-                    border.Background = Brushes.LightGray;
+                    border.SetResourceReference(Control.BackgroundProperty, "AccentColor");
                     txt.Text = $"{ms} milliseconds!";
                     stopwatch.Reset();
                     isPressed = false;
@@ -84,17 +85,18 @@ namespace Trainer.Windows
         {
             cts?.Cancel();
             cts = new CancellationTokenSource();
-            border.Background = Brushes.Red;
+            border.Background = (Brush)new BrushConverter().ConvertFrom("#dc3545");
             txt.Text = "Wait...";
             try
             {
                 await Task.Delay(rnd.Next(1000, 5000), cts.Token);
-                border.Background = Brushes.Green;
+                border.Background = (Brush)new BrushConverter().ConvertFrom("#57c470");
+                txt.Text = "Click!";
                 stopwatch.Start();
             }
             catch (OperationCanceledException)
             {
-                border.Background = Brushes.LightGray;
+                border.SetResourceReference(Control.BackgroundProperty, "AccentColor");
                 txt.Text = "False start! Try again!";
                 stopwatch.Stop();
                 stopwatch.Reset();
@@ -110,6 +112,8 @@ namespace Trainer.Windows
         private void Exit(object sender, RoutedEventArgs e)
         {
             this.Close();
+            stopwatch.Stop();
+            stopwatch.Reset();
         }
     }
 }

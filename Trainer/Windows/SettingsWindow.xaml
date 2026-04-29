@@ -15,7 +15,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Style="{StaticResource HeaderText}" Text="Settings" HorizontalAlignment="Center" Margin="20 20 20 3"/>
+        <TextBlock Grid.Row="0" Style="{StaticResource TitleText}" Text="Settings" HorizontalAlignment="Center" Margin="20 20 20 3"/>
         <!--size, color, window_size, count(of targets at the same time), time-->
 
         <GridSplitter Grid.Row="1" Margin="90 0 90 15" IsEnabled="False"/>

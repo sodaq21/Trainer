@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trainer.Windows"
         mc:Ignorable="d"
-        Title="Trainer - Reaction Time" Height="500" Width="700" PreviewKeyDown="Window_KeyUp" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Trainer - Reaction Time" Height="500" Width="700" PreviewKeyDown="Window_KeyUp" 
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{DynamicResource WindowBg}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -13,24 +14,39 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
         <Grid Grid.Row="0" HorizontalAlignment="Stretch">
-            <Button Style="{StaticResource ServiceBtn}" HorizontalAlignment="Left" Click="Exit">
-                    <Image Source="/Assets/return_light.png"/>
+            <Button Style="{StaticResource ServiceButton}" HorizontalAlignment="Left" Click="Exit">
+                <Image Source="{DynamicResource ReturnIcon}"/>
             </Button>
-            <TextBlock Text="Reaction Time Test" Style="{StaticResource HeaderText}" HorizontalAlignment="Center"/>
+            <TextBlock Text="Reaction Time Test" Style="{StaticResource TitleText}" HorizontalAlignment="Center"/>
         </Grid>
 
         <GridSplitter Grid.Row="1" Margin="5 0" IsEnabled="False"/>
 
         <Grid Grid.Row="2">
-            <TextBlock x:Name="bestTxt" Style="{StaticResource CommonText}" Margin="15 0" HorizontalAlignment="Left" Text="{Binding BestTime, StringFormat='Best: {0} ms.', TargetNullValue='Best: -', FallbackValue='Best: -'}"/>
+            <TextBlock x:Name="bestTxt" Style="{StaticResource CommonText}" Margin="15 0" 
+                       HorizontalAlignment="Left" Text="{Binding BestTime, StringFormat='Best: {0} ms.', TargetNullValue='Best: -', FallbackValue='Best: -'}"/>
         </Grid>
 
         <Grid Grid.Row="3">
-            <Button x:Name="react_btn" Click="ReactionClick">
-                <Border x:Name="border" CornerRadius="20" Background="LightGray" Width="600" Height="350">
-                    <TextBlock x:Name="txt" Text="Click when the button turns green" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button x:Name="react_btn" Click="ReactionClick" Background="Transparent" BorderThickness="0"
+                    Width="600" Height="350" Cursor="Hand">
+                <Border x:Name="border" CornerRadius="20" Background="{DynamicResource AccentColor}" Width="600" Height="350">
+                    <TextBlock x:Name="txt" Text="Click when the button turns green" 
+                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                               FontSize="32" FontFamily="Segoe UI Variable Text, Segoe UI"/>
                 </Border>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Opacity" Value="0.85"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </Grid>
     </Grid>

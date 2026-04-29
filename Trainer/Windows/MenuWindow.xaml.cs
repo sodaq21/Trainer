@@ -41,5 +41,10 @@ namespace Trainer.Windows
             reactionWindow.ShowDialog();
             this.Show();
         }
+
+        private void SwitchTheme(object sender, RoutedEventArgs e)
+        {
+            App.ToggleTheme();
+        }
     }
 }

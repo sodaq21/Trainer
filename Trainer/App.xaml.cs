@@ -19,5 +19,17 @@ namespace Trainer
             var MenuWindow = new MenuWindow();
             MenuWindow.Show();
         }
+
+        private static bool _isDark = false;
+
+        public static void ToggleTheme()
+        {
+            _isDark = !_isDark;
+            string themeName = _isDark ? "Dark" : "Light";
+
+            var uri = new Uri($"Themes/{themeName}.xaml", UriKind.Relative);
+            var appResources = Current.Resources.MergedDictionaries;
+            appResources.Add(new ResourceDictionary { Source = uri });
+        }
     }
 }
