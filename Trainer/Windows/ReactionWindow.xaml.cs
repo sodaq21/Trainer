@@ -59,6 +59,8 @@ namespace Trainer.Windows
 
         private void ReactionClick(object sender, RoutedEventArgs e)
         {
+            var border = react_btn.Template.FindName("border", react_btn) as Border;
+            var txt = react_btn.Template.FindName("txt", react_btn) as TextBlock;
             if (!isPressed)
             {
                 isPressed = true;
@@ -83,6 +85,8 @@ namespace Trainer.Windows
         }
         private async void StartReactionTest()
         {
+            var border = react_btn.Template.FindName("border", react_btn) as Border;
+            var txt = react_btn.Template.FindName("txt", react_btn) as TextBlock;
             cts?.Cancel();
             cts = new CancellationTokenSource();
             border.Background = (Brush)new BrushConverter().ConvertFrom("#dc3545");

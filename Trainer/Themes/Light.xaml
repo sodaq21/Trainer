@@ -4,8 +4,7 @@
     <SolidColorBrush x:Key="CardBg" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="PrimaryText" Color="#1A1A1A"/>
     <SolidColorBrush x:Key="SecondaryText" Color="#252525"/>
-    <SolidColorBrush x:Key="AccentColor" Color="#007AFF"/>
-    <!-- Классический синий -->
+    <SolidColorBrush x:Key="AccentColor" Color="#1976D2"/>
     <SolidColorBrush x:Key="ButtonHover" Color="#F1F1F1"/>
 
     <BitmapImage x:Key="SettingsIcon" UriSource="/Assets/settings_light.png"/>

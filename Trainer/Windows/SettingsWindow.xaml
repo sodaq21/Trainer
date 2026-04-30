@@ -7,7 +7,8 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Trainer - Settings" Height="500" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" KeyUp="Window_KeyUp">
+        Title="Trainer - Settings" Height="570" Width="400" 
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" KeyUp="Window_KeyUp" Background="{DynamicResource WindowBg}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -15,15 +16,14 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Style="{StaticResource TitleText}" Text="Settings" HorizontalAlignment="Center" Margin="20 20 20 3"/>
-        <!--size, color, window_size, count(of targets at the same time), time-->
+        <TextBlock Grid.Row="0" Style="{StaticResource TitleText}" Text="Settings" HorizontalAlignment="Center" Margin="20 15 20 0"/>
 
-        <GridSplitter Grid.Row="1" Margin="90 0 90 15" IsEnabled="False"/>
+        <GridSplitter Grid.Row="1" Margin="80 5" IsEnabled="False" Background="#999999" Height="2" HorizontalAlignment="Stretch"/>
 
-        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="2">
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Row="2" Margin="0 15 0 0">
             <StackPanel Margin="0 0 0 15">
-                <TextBlock Style="{StaticResource CommonText}" Text="Window size" />
-                <ComboBox x:Name="WindowSize_cb" Width="150">
+                <TextBlock Style="{StaticResource SettingsText}" Text="Window size" HorizontalAlignment="Center"/>
+                <ComboBox x:Name="WindowSize_cb" Width="150" Style="{StaticResource ModernComboBox}">
                     <sys:String>640 × 360</sys:String>
                     <sys:String>854 × 480</sys:String>
                     <sys:String>960 × 540</sys:String>
@@ -43,34 +43,33 @@
                 </Grid>
             </StackPanel>-->
             <StackPanel Margin="0 0 0 15">
-                <TextBlock Style="{StaticResource CommonText}" Text="Target size" />
-                <ComboBox x:Name="TargetSize_cb" Width="150">
+                <TextBlock Style="{StaticResource SettingsText}" Text="Target size" />
+                <ComboBox x:Name="TargetSize_cb" Width="150" Style="{StaticResource ModernComboBox}">
                     <sys:Int32>1</sys:Int32>
                     <sys:Int32>2</sys:Int32>
                     <sys:Int32>3</sys:Int32>
                     <sys:Int32>4</sys:Int32>
                     <sys:Int32>5</sys:Int32>
+                    <sys:Int32>6</sys:Int32>
+                    <sys:Int32>7</sys:Int32>
+                    <sys:Int32>8</sys:Int32>
+                    <sys:Int32>9</sys:Int32>
+                    <sys:Int32>10</sys:Int32>
                 </ComboBox>
             </StackPanel>
             <StackPanel Margin="0 0 0 15">
-                <TextBlock Style="{StaticResource CommonText}" Text="Target color" />
-                <!--<ComboBox x:Name="TargetColor_cb" Width="150">
-                    <sys:String>Black</sys:String>
-                    <sys:String>White</sys:String>
-                    <sys:String>Red</sys:String>
-                    <sys:String>Green</sys:String>
-                    <sys:String>Blue</sys:String>
-                    <sys:String>Purple</sys:String>
-                </ComboBox>-->
-                <xctk:ColorPicker x:Name="color_picker" HorizontalAlignment="Center" Width="150" UsingAlphaChannel="False" 
-                                  ShowRecentColors="True"
+                <TextBlock Style="{StaticResource SettingsText}" Text="Target color" />
+                <xctk:ColorPicker x:Name="color_picker"
+                                  HorizontalAlignment="Center" Width="150" UsingAlphaChannel="False" 
+                                  ShowRecentColors="True" 
                                   ColorMode="ColorCanvas"
-                                  ShowStandardColors="False" SelectedColor="Red">
+                                  ShowStandardColors="False" SelectedColor="Red"
+                                  >
                 </xctk:ColorPicker>
             </StackPanel>
             <StackPanel Margin="0 0 0 15">
-                <TextBlock Style="{StaticResource CommonText}" Text="Target count" />
-                <ComboBox x:Name="TargetCount_cb" Width="150">
+                <TextBlock Style="{StaticResource SettingsText}" Text="Target count" />
+                <ComboBox x:Name="TargetCount_cb" Width="150" Style="{StaticResource ModernComboBox}">
                     <sys:Int32>1</sys:Int32>
                     <sys:Int32>2</sys:Int32>
                     <sys:Int32>3</sys:Int32>
@@ -78,9 +77,9 @@
                     <sys:Int32>5</sys:Int32>
                 </ComboBox>
             </StackPanel>
-            <StackPanel Margin="0 0 0 15">
-                <TextBlock Style="{StaticResource CommonText}" Text="Time"/>
-                <ComboBox x:Name="Time_cb" Width="150">
+            <StackPanel Margin="0 0 0 30">
+                <TextBlock Style="{StaticResource SettingsText}" Text="Time"/>
+                <ComboBox x:Name="Time_cb" Width="150" Style="{StaticResource ModernComboBox}">
                     <sys:Int32>10</sys:Int32>
                     <sys:Int32>15</sys:Int32>
                     <sys:Int32>20</sys:Int32>
@@ -89,7 +88,41 @@
                     <sys:Int32>60</sys:Int32>
                 </ComboBox>
             </StackPanel>
-            <Button x:Name="Apply_btn" Width="200" Height="40" Content="Apply" HorizontalAlignment="Center" Background="#dddddd" Click="Button_Click"/>
+            <Button x:Name="Apply_btn" Width="200" Height="40" HorizontalAlignment="Center"
+        Click="Button_Click" Cursor="Hand">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                    CornerRadius="10" 
+                    Background="{DynamicResource AccentColor}" 
+                    BorderThickness="0">
+                            <TextBlock x:Name="txt" 
+                           Text="Apply" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center"
+                           Foreground="Black"
+                           FontSize="22" 
+                           FontFamily="Segoe UI Variable Text, Segoe UI"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Opacity" Value="0.9"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Opacity" Value="0.75"/>
+                                <Setter TargetName="border" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.98" ScaleY="0.98"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

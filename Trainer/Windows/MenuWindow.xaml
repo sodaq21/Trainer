@@ -19,16 +19,16 @@
 
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TitleText}" Text="Choose the mode" Margin="0 35 0 0" FontSize="34"/>
         <Button Grid.Row="1" Grid.ColumnSpan="2" Content="Aim Trainer" Style="{StaticResource IconButton}" 
-                Click="AimBtn_Click" Width="300" Height="85">
+                Click="AimBtn_Click" Width="350" Height="85">
             <Button.Tag>
                 <Image x:Name="menu_crosshair" Source="{DynamicResource CrosshairIcon}" Width="50" Height="50"/>
             </Button.Tag>
         </Button>
 
         <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Reaction Time" Style="{StaticResource IconButton}" 
-                Click="ReactionBtn_Click" Width="300" Height="85" Margin="0 0 0 20">
+                Click="ReactionBtn_Click" Width="350" Height="85" Margin="0 0 0 20">
             <Button.Tag>
-                <Image Source="{DynamicResource TimerIcon}"/>
+                <Image Source="{DynamicResource TimerIcon}" Margin="0"/>
             </Button.Tag>
         </Button>
 

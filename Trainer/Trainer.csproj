@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\ColorToBrushConverter.cs" />
     <Compile Include="Models\GameSettings.cs" />
     <Compile Include="Windows\AimWindow.xaml.cs">
       <DependentUpon>AimWindow.xaml</DependentUpon>

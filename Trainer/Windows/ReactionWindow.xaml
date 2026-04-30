@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Trainer.Windows"
         mc:Ignorable="d"
-        Title="Trainer - Reaction Time" Height="500" Width="700" PreviewKeyDown="Window_KeyUp" 
+        Title="Trainer - Reaction Time" Height="520" Width="700" PreviewKeyDown="Window_KeyUp" 
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{DynamicResource WindowBg}">
     <Grid>
         <Grid.RowDefinitions>
@@ -14,7 +14,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <Grid Grid.Row="0" HorizontalAlignment="Stretch">
             <Button Style="{StaticResource ServiceButton}" HorizontalAlignment="Left" Click="Exit">
                 <Image Source="{DynamicResource ReturnIcon}"/>
@@ -32,21 +32,36 @@
         <Grid Grid.Row="3">
             <Button x:Name="react_btn" Click="ReactionClick" Background="Transparent" BorderThickness="0"
                     Width="600" Height="350" Cursor="Hand">
-                <Border x:Name="border" CornerRadius="20" Background="{DynamicResource AccentColor}" Width="600" Height="350">
-                    <TextBlock x:Name="txt" Text="Click when the button turns green" 
-                               HorizontalAlignment="Center" VerticalAlignment="Center"
-                               FontSize="32" FontFamily="Segoe UI Variable Text, Segoe UI"/>
-                </Border>
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Style.Triggers>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Opacity" Value="0.85"/>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                CornerRadius="10" 
+                                Background="{DynamicResource AccentColor}" 
+                                BorderThickness="0">
+                            <TextBlock x:Name="txt" 
+                                       Text="Click when the button turns green" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center"
+                                       Foreground="Black"
+                                       FontSize="36" 
+                                       FontFamily="Segoe UI Variable Text, Segoe UI"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Opacity" Value="0.9"/>
                             </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True"/>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.98" ScaleY="0.98"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
             </Button>
         </Grid>
     </Grid>

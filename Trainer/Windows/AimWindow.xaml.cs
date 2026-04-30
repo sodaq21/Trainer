@@ -93,6 +93,18 @@ namespace Trainer.Windows
 
         private void TargetAdd()
         {
+            string styleXaml = @"
+                                <Style xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' TargetType='Button'>
+                                    <Setter Property='Template'>
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType='Button'>
+                                                <Border Background='{TemplateBinding Background}' CornerRadius='5'>
+                                                    <ContentPresenter HorizontalAlignment='Center' VerticalAlignment='Center'/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>";
             Button target = new Button();
             double size = gameSettings.targetsSize * 10.0;
             Border border = new Border
@@ -102,7 +114,7 @@ namespace Trainer.Windows
                 Width = size,
                 Height = size
             };
-            target.Cursor = Cursors.Hand;
+            target.Style = (Style)System.Windows.Markup.XamlReader.Parse(styleXaml);
             target.Content = border;
             target.BorderThickness = new Thickness(0);
             target.Background = Brushes.Transparent;
@@ -129,6 +141,7 @@ namespace Trainer.Windows
                 TargetAdd();
             }
             StopButton.IsEnabled = true;
+            SettingsButton.IsEnabled = false;
         }
 
         private void _timer_Tick(object sender, EventArgs e)
@@ -147,6 +160,7 @@ namespace Trainer.Windows
             MessageBox.Show($"Your score = {Score}!", "Trainer - Game Over", MessageBoxButton.OK, MessageBoxImage.Information);
             Seconds = 0;
             StopButton.IsEnabled = false;
+            SettingsButton.IsEnabled = true;
         }
 
         private void TargetClick(object sender, RoutedEventArgs e)
